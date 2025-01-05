@@ -50,9 +50,9 @@
         return false;
     }
     // Loop through the follows array to check for a match
-    for (int i = 0; i < fCount; i++) {
+    for (int i = 0; i <this.getfCount(); i++) {
         // Check if the current element is not null and equals the given name
-        if (this.follows[i] != null && (this.follows[i].toLowerCase().equals(name.toLowerCase()))) {
+        if ((this.getfFollows()[i].toLowerCase().equals(name.toLowerCase()))) {
             return true;
         }
     }
