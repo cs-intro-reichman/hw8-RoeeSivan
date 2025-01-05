@@ -30,11 +30,11 @@ public class Network {
      *  Notice that the method receives a String, and returns a User object. */
     public User getUser(String name) {
         for (int i = 0; i < this.userCount; i++) {
-            if (this.users[i].getName().toLowerCase().equals(name.toLowerCase())) {
+            if (this.users[i].getName().toLowerCase().equals(name.toLowerCase())) { //if the name is equal it returns the the right user
                 return this.users[i];
             }
         }
-        return null;
+        return null; //if no user found - returns null
     }
 
 
@@ -43,10 +43,10 @@ public class Network {
     *  If the given name is already a user in this network, does nothing and returns false;
     *  Otherwise, creates a new user with the given name, adds the user to this network, and returns true. */
     public boolean addUser(String name)  {
-        if(getUser(name) != null || this.userCount == this.users.length) {
+        if(getUser(name) != null || this.userCount == this.users.length) { //if the network is full, or if user is alreay in our network - return false.
             return false;
         }
-        this.users[this.userCount] = new User(name);
+        this.users[this.userCount] = new User(name); //adding our user to the last index
         this.userCount ++;
         return true;
     }
@@ -56,18 +56,15 @@ public class Network {
      *  If any of the two names is not a user in this network,
      *  or if the "follows" addition failed for some reason, returns false. */
     public boolean addFollowee(String name1, String name2) {
-        if (name1 == null || name2 == null) {
+        if (name1 == null || name2 == null) 
+        { 
              return false;
         }
         if(getUser(name1) == null || getUser(name2) == null){
             return false;
         }
-        if (getUser(name1).follows(name2)) {
-            return false;
-        }
-        if (name1.equals(name2)) {
-            return false;
-        }
+        if (getUser(name1).follows(name2)) return false; //if it already follows name2 does nothing and returns false
+        if (name1.equals(name2)) return false;          //situation for when the users are the same - a person cant follow himself
         return getUser(name1).addFollowee(name2);
     }
 
@@ -78,7 +75,7 @@ public class Network {
     public String recommendWhoToFollow(String name) {
         int theMost = -1;
         int bestIndex = -1;
-        for(int i = 0; i < userCount; i++) {
+        for(int i = 0; i < this.userCount; i++) {
             if (users[i] != getUser(name)) {
                 int mutuals = getUser(name).countMutual(users[i]);
                 if (mutuals > theMost) {
@@ -100,9 +97,9 @@ public class Network {
         for(int i = 0; i < userCount; i++) {
             int followers = followeeCount(users[i].getName());
 
-            if(followers > theMost) {
-                theMost = followers;
-                bestIndexPopular = i;
+            if(followers > theMost) { 
+                theMost = followers; //updating each time if followers is bigger
+                bestIndexPopular = i;// i update each time my prefered index 
             }
         }
         return users[bestIndexPopular].getName();
