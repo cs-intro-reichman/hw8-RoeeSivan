@@ -307,13 +307,12 @@ public class TestHandler {
         String expected = "true";
         String actual = "";
         try {
-            actual += (alice.addFollowee("Foo") && alice.addFollowee("foo") && alice.getfCount() == 1 && alice.follows("Foo"));
+            actual += (alice.addFollowee("Foo") && !alice.addFollowee("foo") && alice.getfCount() == 1 && alice.follows("Foo"));
         } catch (Exception e) {
             actual = TesterMessagesEnum.ERROR + e.getMessage();
         }
         return this.tester.test("Alice, getting started = false, try to add Followee Foo and foo", expected, actual);
     }
-
     // Improved removeFollowee Tests
     public void mainRemoveFolloweeTest() {
         this.tester.reset(TesterQuestionEnum.USER_REMOVE_FOLLOWEE);
@@ -323,7 +322,6 @@ public class TestHandler {
         }
         System.out.println(tester);
     }
-
     public boolean removeFolloweeTests(int testNumber) {
         switch (testNumber) {
             case 1:
