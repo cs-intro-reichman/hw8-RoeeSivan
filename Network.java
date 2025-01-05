@@ -84,22 +84,21 @@ public class Network {
      *  the user that has the maximal mutual number of followees as the user with the given name. */
     public String recommendWhoToFollow(String name) {
         User myUser = getUser(name);
-        if(myUser == null)
+        if(name ==null)
         {
-            return "";
+            return null;
         }
-        User recommendedUser = this.users[0];
-        if (recommendedUser.getName() == name) {
-            recommendedUser = this.users[1];
-        }
-        for (int i = 0; i < this.userCount; i++) {
-            if (this.users[i].getName() != name) {
-                if (this.users[i].countMutual(myUser) > recommendedUser.countMutual(myUser)) {
-                    recommendedUser = this.users[i];
-                }
+        int max = 0;
+        String recommended = new String();
+        for(int i =0; i<this.getUserCount();i++)
+        {
+            if(this.getUser(name).countMutual(this.users[i])>max && this.users[i].getName()!=name)
+            {
+                max = this.getUser(name).countMutual(this.users[i]);
+                recommended =this.users[i].getName();
             }
         }
-        return recommendedUser.getName();
+        return recommended;
     }
 
     /** Computes and returns the name of the most popular user in this network: 
