@@ -84,7 +84,7 @@ public class Network {
      *  the user that has the maximal mutual number of followees as the user with the given name. */
     public String recommendWhoToFollow(String name) {
         User myUser = getUser(name);
-        if(myUser==null)
+        if(myUser.getName()=="")
         {
             return "";
         }
