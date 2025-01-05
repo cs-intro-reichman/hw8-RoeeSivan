@@ -53,7 +53,7 @@
     // Loop through the follows array to check for a match
     for (int i = 0; i < fCount; i++) {
         // Check if the current element is not null and equals the given name
-        if (follows[i] != null && follows[i].equals(name)) {
+        if (follows[i] != null && follows[i].equals(name.toLowerCase())) {
             return true;
         }
     }
