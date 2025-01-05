@@ -59,23 +59,6 @@ public class Network
         this.userCount++;
         return true;
     }
-
-    /** Adds a new user with the given name to this network.
-    *  If ths network is full, does nothing and returns false;
-    *  If the given name is already a user in this network, does nothing and returns false;
-    *  Otherwise, creates a new user with the given name, adds the user to this network, and returns true. */
-    public boolean addUser(String name)
-     {
-        if(this.users.length == this.userCount)
-        {
-            return false; // returns falls if my network is full
-        }
-        User Newuser = new User (name);
-        this.users[this.userCount] = Newuser; 
-        this.userCount++;
-        return true;
-    }
-
     /** Makes the user with name1 follow the user with name2. If successful, returns true.
      *  If any of the two names is not a user in this network,
      *  or if the "follows" addition failed for some reason, returns false. */
