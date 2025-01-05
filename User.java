@@ -66,7 +66,7 @@
     public boolean addFollowee(String name) 
     {
         //// Replace the following statement with your code //foo and Foo
-        if(this.follows(name))
+        if(this.follows(name.toLowerCase()))
         {
             return false;
         }
@@ -112,7 +112,7 @@
             follows[i] = follows[i+1];
         }
         follows[fCount - 1] = null;
-        fCount--;
+        this.fCount--;
         return true;
     }
 
