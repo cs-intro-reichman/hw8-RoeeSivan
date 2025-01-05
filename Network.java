@@ -29,11 +29,11 @@ public class Network {
      *  Notice that the method receives a String, and returns a User object. */
     public User getUser(String name) {
         //// Replace the following statement with your code        
-        for(int i =0;i<userCount;i++)
+        for(int i =0;i<this.userCount;i++)
         {
-            if((users[i]!=null)&&users[i].getName().equals(name.toLowerCase()))
+            if((this.users[i].getName().toLowerCase().equals(name.toLowerCase())))
             {
-                return users[i];
+                return this.users[i];
             }
         }
         return null;
