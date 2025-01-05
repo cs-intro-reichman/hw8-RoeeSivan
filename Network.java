@@ -47,7 +47,7 @@ public class Network {
             return false;
         }
         this.users[this.userCount] = new User(name); //adding our user to the last index
-        this.userCount ++;
+        this.userCount ++; //updaing the usrerCount
         return true;
     }
 
@@ -67,8 +67,6 @@ public class Network {
         if (name1.equals(name2)) return false;          //situation for when the users are the same - a person cant follow himself
         return getUser(name1).addFollowee(name2);
     }
-
-
     
     /** For the user with the given name, recommends another user to follow. The recommended user is
      *  the user that has the maximal mutual number of followees as the user with the given name. */
@@ -77,9 +75,9 @@ public class Network {
         int bestIndex = -1;
         for(int i = 0; i < this.userCount; i++) {
             if (users[i] != getUser(name)) {
-                int mutuals = getUser(name).countMutual(users[i]);
-                if (mutuals > theMost) {
-                    theMost = mutuals;
+                int countermutuals = getUser(name).countMutual(users[i]);
+                if (countermutuals > theMost) {
+                    theMost = countermutuals;
                     bestIndex = i;
             }
         }
