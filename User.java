@@ -70,6 +70,10 @@
         {
             return false;
         }
+        if(this.follows(name))
+        {
+            return false;
+        }
         if (this.follows[maxfCount-1]== null) // if my last element is null 
         {
         int count = 0;
