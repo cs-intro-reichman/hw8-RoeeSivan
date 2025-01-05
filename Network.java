@@ -48,13 +48,13 @@ public class Network {
     *  If the given name is already a user in this network, does nothing and returns false;
     *  Otherwise, creates a new user with the given name, adds the user to this network, and returns true. */
     public boolean addUser(String name) {
-        if((users[userCount]!=null)|| (name.equals(users))) //follow list is full
+        if(this.users.length == this.userCount)
         {
-            return false;
+            return false; // returns falls if my network is full
         }
         User Newuser = new User (name);
-        userCount++;
-        users[userCount-1] = Newuser; 
+        this.users[this.userCount] = Newuser; 
+        this.userCount++;
         return true;
     }
 
@@ -71,24 +71,14 @@ public class Network {
         {
             return false;
         }
-        for(int i =0; i <userCount;i++)
+        User user1 = new User(name1);
+        User user2 = new User(name2);
+        if((user1==null)||(user2==null))
         {
-            if((users[i].getName().equals(name1.toLowerCase())))
-            {
-               if(!users[i].addFollowee(name2))
-               {
-                return false;
-               }
-               else
-               {
-                users[i].addFollowee(name2);
-               }
+            return false; // if one of my users if false - return false
         }
-        }
-        return true;
+        return user1.addFollowee(name2);
     }
-
-    
     /** For the user with the given name, recommends another user to follow. The recommended user is
      *  the user that has the maximal mutual number of followees as the user with the given name. */
     public String recommendWhoToFollow(String name) {
