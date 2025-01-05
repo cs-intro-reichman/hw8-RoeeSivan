@@ -67,25 +67,13 @@
     {
         //// Replace the following statement with your code //foo and Foo
         String name1 = name.substring(0,1).toUpperCase() + name.substring(1);
-        if(this.follows(name1))
+        if(this.follows(name1)||(this.fCount==maxfCount))
         {
             return false;
         }
-        if (this.follows[maxfCount-1]== null) // if my last element is null 
-        {
-        int count = 0;
-        for(int i =0; i< this.follows.length;i++)
-        {
-        if(this.follows[i] != null)
-        {
-            count++;
-        }
-        }
-    this.follows[count] = name1; 
+    this.follows[fCount] = name1; 
     this.fCount++;
     return true;
-    }
-    return false;
     }
     /** Removes the given name from the follows list of this user. If successful, returns true.
      *  If the name is not in the list, does nothing and returns false. */
