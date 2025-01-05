@@ -1,5 +1,7 @@
 
 
+
+
 /** Represents a social network. The network has users, who follow other uesrs.
  *  Each user is an instance of the User class. */
 public class Network {
@@ -108,8 +110,10 @@ public class Network {
     /** Computes and returns the name of the most popular user in this network: 
      *  The user who appears the most in the follow lists of all the users. */
     public String mostPopularUser() {
-        //// Replace the following statement with your code
-        int popIndex = 0; //this will be the index of the most popular user
+       if(this.users[0] == null){
+        return null;
+       }
+        int popIndex = -1; //this will be the index of the most popular user
         int max =followeeCount(users[0].getName()); //i inizliate it to ther first so i can compare.
         int compare = -1;
         for(int i =0; i< userCount;i++)
@@ -147,7 +151,7 @@ public class Network {
        /// // i have an array of users, and i need to get the name of each user
        for(int i = 0; i<userCount;i++)
        {
-        s1+=(users[i].toString() + "\n");
+        s1+=("\n" +users[i].toString());
        }
        return  s1;
        }
