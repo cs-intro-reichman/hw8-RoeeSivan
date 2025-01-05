@@ -66,11 +66,8 @@
     public boolean addFollowee(String name) 
     {
         //// Replace the following statement with your code //foo and Foo
-        if(this.follows(name.toLowerCase()))
-        {
-            return false;
-        }
-        if(this.follows(name))
+        String name1 = name.substring(0,1).toUpperCase() + name.substring(1);
+        if(this.follows(name1))
         {
             return false;
         }
@@ -84,7 +81,7 @@
             count++;
         }
         }
-    this.follows[count] = name; 
+    this.follows[count] = name1; 
     this.fCount++;
     return true;
     }
@@ -128,7 +125,7 @@
          for(int i = 0;i<this.fCount;i++)
          {
             for(int j =0;j<other.fCount;j++)
-            if(this.follows[i].equals(other.follows[j]))
+            if(other.follows[i].equals(this.follows[j]))
             {
                 count++;
                 break;
