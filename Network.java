@@ -36,7 +36,7 @@ public class Network {
         
         for(int i =0;i<userCount;i++)
         {
-            if((users[i]!=null)&&users[i].getName().equals(name))
+            if((users[i]!=null)&&users[i].getName().equals(name.toLowerCase()))
             {
                 return users[i];
             }
@@ -70,7 +70,7 @@ public class Network {
         //// Replace the following statement with your code
         for(int i =0; i <userCount;i++)
         {
-            if((users[i].getName().equals(name1)))
+            if((users[i].getName().equals(name1.toLowerCase())))
             {
                if(!users[i].addFollowee(name2))
                {
