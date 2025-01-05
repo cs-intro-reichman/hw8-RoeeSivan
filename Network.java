@@ -69,17 +69,18 @@ public class Network {
         {
             return false;
         }
-        User user1 = new User(name1);
-        User user2 = new User(name2);
-        if((user1==null)||(user2==null))
-        {
-            return false; // if one of my users if false - return false
-        }
         if(name1.equals(name2))
         {
             return false;
         }
-        return getUser(name1).addFollowee(name2);
+        User user1 = new User(name1);
+        User user2 = new User(name2);
+        if((user1==null)||(user2==null))
+        {
+            return false; // if one of my users if false - return false 
+        }
+        
+        return user1.addFollowee(name2);
     }
     /** For the user with the given name, recommends another user to follow. The recommended user is
      *  the user that has the maximal mutual number of followees as the user with the given name. */
@@ -110,7 +111,7 @@ public class Network {
         return null;
        }
        User popularUser = this.users[0];
-        int max =followeeCount(users[0].getName()); //i inizliate it to ther first so i can compare.
+        int max =followeeCount(users[0].getName()); //i inizliate it to the first so i can compare.
         for(int i =1; i< this.userCount;i++)
         {
             if (followeeCount(this.users[i].getName()) > followeeCount(popularUser.getName()))

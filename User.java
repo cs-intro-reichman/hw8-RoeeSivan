@@ -66,14 +66,25 @@
     public boolean addFollowee(String name) 
     {
         //// Replace the following statement with your code //foo and Foo
-        String name1 = name.substring(0,1).toUpperCase() + name.substring(1);
-        if(this.follows(name1)||(this.fCount==maxfCount))
+        if(this.follows(name))
         {
             return false;
         }
-    this.follows[fCount] = name1; 
+        if(this.follows[maxfCount-1]==null)
+        {
+            int counter = 0;
+            for(int i = 0;i <this.follows.length;i++)
+            {
+                if(this.follows[i]!= null)
+                {
+                    counter++;
+                }
+            }
+    this.follows[counter] = name; 
     this.fCount++;
     return true;
+        }
+        return false;
     }
     /** Removes the given name from the follows list of this user. If successful, returns true.
      *  If the name is not in the list, does nothing and returns false. */
