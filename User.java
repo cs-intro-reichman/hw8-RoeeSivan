@@ -124,10 +124,9 @@
          for(int i = 0;i<this.fCount;i++)
          {
             for(int j =0;j<other.fCount;j++)
-            if(other.follows[i].equals(this.follows[j]))
+            if(other.follows[j].equals(this.follows[i]))
             {
                 count++;
-                break;
             }
          }
         return count;
@@ -144,7 +143,6 @@
         }
         return false;
     }
-       
     /** Returns this user's name, and the names that s/he follows. */
     /** Returns this user's name, and the names that s/he follows. */
     public String toString() {

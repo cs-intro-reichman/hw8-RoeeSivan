@@ -43,11 +43,11 @@ public class Network {
     *  If the given name is already a user in this network, does nothing and returns false;
     *  Otherwise, creates a new user with the given name, adds the user to this network, and returns true. */
     public boolean addUser(String name)  {
-        if(getUser(name) != null || userCount == users.length) {
+        if(getUser(name) != null || this.userCount == this.users.length) {
             return false;
         }
-        users[userCount] = new User(name);
-        userCount ++;
+        this.users[this.userCount] = new User(name);
+        this.userCount ++;
         return true;
     }
 
@@ -89,8 +89,6 @@ public class Network {
         }
         return users[bestIndex].getName();
     }
-
-
     /** Computes and returns the name of the most popular user in this network: 
      *  The user who appears the most in the follow lists of all the users. */
     public String mostPopularUser() {
@@ -98,16 +96,16 @@ public class Network {
             return null;
         }
         int theMost = -1;
-        int bestIndex = -1;
+        int bestIndexPopular = -1;
         for(int i = 0; i < userCount; i++) {
             int followers = followeeCount(users[i].getName());
 
             if(followers > theMost) {
                 theMost = followers;
-                bestIndex = i;
+                bestIndexPopular = i;
             }
         }
-        return users[bestIndex].getName();
+        return users[bestIndexPopular].getName();
     }
 
 
