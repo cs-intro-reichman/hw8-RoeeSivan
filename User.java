@@ -56,8 +56,7 @@
             return true;
         }
     }
-    // If no match is found, return false
-    return false;
+        return false;
 }
 
     //* alex.addFollowee("Ben"); */
