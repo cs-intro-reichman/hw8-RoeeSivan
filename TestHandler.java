@@ -185,6 +185,7 @@ public class TestHandler {
         }
         return this.tester.test("Alice getting started = false, checks follows Foo", expected, actual);
     }
+    
 
     public boolean followsTest6(){
         User alice = new User("Alice");

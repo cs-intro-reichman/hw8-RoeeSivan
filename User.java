@@ -46,7 +46,7 @@
  * If this user follows the given name, returns true; otherwise, returns false. 
  */ public boolean follows(String name) {
     // Null check for the input name
-    if (name == null) {
+    if (name.toLowerCase() == null) {
         return false;
     }
 
