@@ -99,6 +99,10 @@ public class Network {
                 }
             }
         }
+        if(recommendedUser==null)
+        {
+            return "";
+        }
         return recommendedUser.getName();
     }
 
@@ -124,11 +128,16 @@ public class Network {
      *  the users in this network. Note: A name can appear 0 or 1 times in each list. */
     private int followeeCount(String name) {
         int count = 0;
-        for(int i =0; i<userCount;i++)
+        for(int i =0; i<this.userCount;i++)
         {
-            if(users[i].follows(name))
+            User currentUser = this.users[i];
+            String[] userFollows = currentUser.getfFollows();
+            for(int j =0;j<currentUser.getfCount();j++)
             {
-                count++;
+                if(userFollows[j].equals(name))
+                {
+                    count++;
+                }
             }
         }
         return count;
