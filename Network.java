@@ -146,7 +146,7 @@ public class Network {
     // Returns a textual description of all the users in this network, and who they follow.
     public String toString() 
     {
-        String s1 = "Network:"+"\n";
+        String s1 = "Network:";
        //// Replace the following statement with your code
        /// // i have an array of users, and i need to get the name of each user
        for(int i = 0; i<userCount;i++)
