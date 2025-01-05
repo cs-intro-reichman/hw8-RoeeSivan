@@ -89,21 +89,18 @@ public class Network {
         {
             return "";
         }
-        int countMax = -1;
-        int index = -1;
-        for(int i =0;i< userCount;i++)
-        {
-            if(users[i]!=getUser(name))
-            {
-                int friends = getUser(name).countMutual(users[i]);
-                if(friends >countMax)
-                {
-                    countMax = friends;
-                    index = i;
+        User recommendedUser = this.users[0];
+        if (recommendedUser.getName() == name) {
+            recommendedUser = this.users[1];
+        }
+        for (int i = 0; i < this.userCount; i++) {
+            if (this.users[i].getName() != name) {
+                if (this.users[i].countMutual(myUser) > recommendedUser.countMutual(myUser)) {
+                    recommendedUser = this.users[i];
                 }
             }
         }
-        return users[index].getName();
+        return recommendedUser.getName();
     }
 
     /** Computes and returns the name of the most popular user in this network: 
@@ -112,19 +109,16 @@ public class Network {
        if(this.users[0] == null){
         return null;
        }
-        int popIndex = -1; //this will be the index of the most popular user
+       User popularUser = this.users[0];
         int max =followeeCount(users[0].getName()); //i inizliate it to ther first so i can compare.
-        int compare = -1;
-        for(int i =0; i< userCount;i++)
+        for(int i =1; i< this.userCount;i++)
         {
-            int counter = followeeCount(users[i].getName());
-            if(counter>max)
-            {
-                max = counter;
-                popIndex = i;
-            }
+            if (followeeCount(this.users[i].getName()) > followeeCount(popularUser.getName()))
+             {
+                popularUser = this.users[i];
+             }
         }
-        return users[popIndex].getName();
+        return popularUser.getName();
     }
 
     /** Returns the number of times that the given name appears in the follows lists of all
